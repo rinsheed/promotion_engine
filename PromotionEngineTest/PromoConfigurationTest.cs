@@ -22,20 +22,20 @@ namespace PromotionEngineTest
             PromoConfiguration promo = new PromoConfiguration(cartData);
             Assert.IsTrue(promo.CalculateTotal() == 100);
 
-            //cartData.Clear();
-            //cartData.Add("A", 5);
-            //cartData.Add("B", 5);
-            //cartData.Add("C", 1);
-            //promo = new PromoConfiguration(cartData);
-            //Assert.AreEqual(promo.CalculateTotal(), 370);
+            cartData.Clear();
+            cartData.Add("A", 5);
+            cartData.Add("B", 5);
+            cartData.Add("C", 1);
+            promo = new PromoConfiguration(cartData);
+            Assert.IsTrue(promo.CalculateTotal() == 370);
 
-            //cartData.Clear();
-            //cartData.Add("A", 3);
-            //cartData.Add("B", 5);
-            //cartData.Add("C", 1);
-            //cartData.Add("D", 1);
-            //promo = new PromoConfiguration(cartData);
-            //Assert.AreEqual(promo.CalculateTotal(), 280);
+            cartData.Clear();
+            cartData.Add("A", 3);
+            cartData.Add("B", 5);
+            cartData.Add("C", 1);
+            cartData.Add("D", 1);
+            promo = new PromoConfiguration(cartData);
+            Assert.IsTrue(promo.CalculateTotal() == 280);
         }
     }
 }
