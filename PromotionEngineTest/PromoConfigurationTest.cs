@@ -56,18 +56,40 @@ namespace PromotionEngineTest
             Assert.IsTrue(promo.CalculateTotal() == 0);
 
             // Invalid & Valid SKU's: F - 1, B - 2, C - 1. Expected result 75.
+            cartData.Clear();
             cartData.Add("F", 1);
             cartData.Add("B", 2);
             cartData.Add("C", 1);
             promo = new PromoConfiguration(cartData);
-            Assert.IsTrue(promo.CalculateTotal() == 75);
+            Assert.IsTrue(promo.CalculateTotal() == 65);
 
-            // By using max limit of Int32 in 'A'.
+            // Applying max limit of Int32 in 'A'.
+            cartData.Clear();
             cartData.Add("A", 2147483647);
             promo = new PromoConfiguration(cartData);
             Assert.IsTrue(promo.CalculateTotal() == 93057624710);
 
+            // Applying max limit of Int32 in 'B'.
+            cartData.Clear();
+            cartData.Add("B", 2147483647);
+            promo = new PromoConfiguration(cartData);
+            Assert.IsTrue(promo.CalculateTotal() == 48318382065);
 
+            // Applying max limit of Int32 in 'C' & 'D'.
+            cartData.Clear();
+            cartData.Add("C", 2147483647);
+            cartData.Add("D", 2147483647);
+            promo = new PromoConfiguration(cartData);
+            Assert.IsTrue(promo.CalculateTotal() == 64424509410);
+
+            // Applying max limit of Int32 in SKU.
+            cartData.Clear();
+            cartData.Add("A", 2147483647);
+            cartData.Add("B", 2147483647);
+            cartData.Add("C", 2147483647);
+            cartData.Add("D", 2147483647);
+            promo = new PromoConfiguration(cartData);
+            Assert.IsTrue(promo.CalculateTotal() == 205800516185);
         }
     }
 }

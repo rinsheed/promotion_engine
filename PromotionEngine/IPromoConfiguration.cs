@@ -6,6 +6,6 @@ namespace PromotionEngine
 {
     public interface IPromoConfiguration
     {
-        public int CalculateTotal();
+        public long CalculateTotal();
     }
 }

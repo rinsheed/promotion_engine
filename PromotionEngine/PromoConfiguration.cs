@@ -80,9 +80,9 @@ namespace PromotionEngine
         }
 
         // Function to calculate the total value of the SKU in the cart.
-        public int CalculateTotal()
+        public long CalculateTotal()
         {
-            int total = 0;
+            long total = 0;
 
             try
             {
@@ -110,14 +110,14 @@ namespace PromotionEngine
                                 CartData[item.ItemId] = CartData[item.ItemId] - (promoMultiples * item.Count);
                         }
                         //Calculate the total cart value after applying the promotion
-                        total += promoMultiples * promo.Value;
+                        total += Convert.ToInt64(promoMultiples) * Convert.ToInt64(promo.Value);
                     }
                 }
 
                 // Calculate cart value for items that doesn't apply promotions
                 foreach (KeyValuePair<string, int> keyValue in CartData)
                 {
-                    total += keyValue.Value > 0 ? SkuDetails[keyValue.Key] * keyValue.Value : 0;
+                    total += keyValue.Value > 0 ? Convert.ToInt64(SkuDetails[keyValue.Key]) * Convert.ToInt64(keyValue.Value) : 0;
                 }
             }
             catch
