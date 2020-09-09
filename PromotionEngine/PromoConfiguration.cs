@@ -72,15 +72,19 @@ namespace PromotionEngine
             }
         }
 
+        // Function to calculate the total value of the SKU in the cart.
         public int CalculateTotal()
         {
             int total = 0;
 
+            // Loop to apply the promotions, if any
             foreach (PromotionModel promo in Promotions)
             {
                 bool applyPromo = true;
 
                 int promoMultiples = 0;
+
+                //Loop to verify the promotion & find the least multiple of promotions need to apply.
                 foreach (ItemModel item in promo.Items)
                 {
                     if (CartData.ContainsKey(item.ItemId) && CartData[item.ItemId] >= item.Count)
@@ -90,11 +94,13 @@ namespace PromotionEngine
                 }
                 if (applyPromo)
                 {
+                    //Remove the units from the cart on which the promotion is applied
                     foreach (ItemModel item in promo.Items)
                     {
                         if (CartData.ContainsKey(item.ItemId))
                             CartData[item.ItemId] = CartData[item.ItemId] - (promoMultiples * item.Count);
                     }
+                    //Calculate the total cart value after applying the promotion
                     total += promoMultiples * promo.Value;
                 }
             }
