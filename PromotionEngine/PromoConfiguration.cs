@@ -122,7 +122,7 @@ namespace PromotionEngine
             }
             catch
             {
-
+                total = -1;
             }
 
             return total;
