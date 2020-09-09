@@ -6,11 +6,11 @@ namespace PromotionEngine
 {
     public class PromoConfiguration
     {
-        public Dictionary<string, int> SkuDetails;
-        public Dictionary<string, int> CartData;
-        public List<PromotionModel> Promotions;
+        private Dictionary<string, int> SkuDetails;
+        private Dictionary<string, int> CartData;
+        private List<PromotionModel> Promotions;
 
-
+        // Constructor - Initializes the class variables
         public PromoConfiguration(Dictionary<string, int> cartInfo)
         {
             SkuDetails = new Dictionary<string, int>();
@@ -71,5 +71,18 @@ namespace PromotionEngine
                 }
             }
         }
+
+        public int CalculateTotal()
+        {
+            int total = 0;
+
+            foreach (KeyValuePair<string, int> keyValue in CartData)
+            {
+                total += keyValue.Value > 0 ? SkuDetails[keyValue.Key] * keyValue.Value : 0;
+            }
+
+            return total;
+        }
+
     }
 }
