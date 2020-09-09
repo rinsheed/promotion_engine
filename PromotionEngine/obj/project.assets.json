@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Maersk Test\\PromotionEngine\\PromotionEngine\\PromotionEngine.csproj",
+      "projectUniqueName": "F:\\Maersk Test\\PromotionEngine New\\PromotionEngine\\PromotionEngine.csproj",
       "projectName": "PromotionEngine",
-      "projectPath": "F:\\Maersk Test\\PromotionEngine\\PromotionEngine\\PromotionEngine.csproj",
+      "projectPath": "F:\\Maersk Test\\PromotionEngine New\\PromotionEngine\\PromotionEngine.csproj",
       "packagesPath": "C:\\Users\\rinsh\\.nuget\\packages\\",
-      "outputPath": "F:\\Maersk Test\\PromotionEngine\\PromotionEngine\\obj\\",
+      "outputPath": "F:\\Maersk Test\\PromotionEngine New\\PromotionEngine\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rinsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
