@@ -49,8 +49,23 @@ namespace PromotionEngineTest
         public void RejectionTest()
         {
             Dictionary<string, int> cartData = new Dictionary<string, int>();
+            
+            // Invalid SKU - 'F'. Expected result 0.
+            cartData.Add("F", 1);
+            PromoConfiguration promo = new PromoConfiguration(cartData);
+            Assert.IsTrue(promo.CalculateTotal() == 0);
 
+            // Invalid & Valid SKU's: F - 1, B - 2, C - 1. Expected result 75.
+            cartData.Add("F", 1);
+            cartData.Add("B", 2);
+            cartData.Add("C", 1);
+            promo = new PromoConfiguration(cartData);
+            Assert.IsTrue(promo.CalculateTotal() == 75);
 
+            // By using max limit of Int32 in 'A'.
+            cartData.Add("A", 2147483647);
+            promo = new PromoConfiguration(cartData);
+            Assert.IsTrue(promo.CalculateTotal() == 93057624710);
 
 
         }
