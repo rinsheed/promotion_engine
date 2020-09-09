@@ -76,6 +76,29 @@ namespace PromotionEngine
         {
             int total = 0;
 
+            foreach (PromotionModel promo in Promotions)
+            {
+                bool applyPromo = true;
+
+                int promoMultiples = 0;
+                foreach (ItemModel item in promo.Items)
+                {
+                    if (CartData.ContainsKey(item.ItemId) && CartData[item.ItemId] >= item.Count)
+                        promoMultiples = promoMultiples == 0 || promoMultiples > CartData[item.ItemId] / item.Count ? CartData[item.ItemId] / item.Count : promoMultiples;
+                    else
+                        applyPromo = false;
+                }
+                if (applyPromo)
+                {
+                    foreach (ItemModel item in promo.Items)
+                    {
+                        if (CartData.ContainsKey(item.ItemId))
+                            CartData[item.ItemId] = CartData[item.ItemId] - (promoMultiples * item.Count);
+                    }
+                    total += promoMultiples * promo.Value;
+                }
+            }
+
             foreach (KeyValuePair<string, int> keyValue in CartData)
             {
                 total += keyValue.Value > 0 ? SkuDetails[keyValue.Key] * keyValue.Value : 0;

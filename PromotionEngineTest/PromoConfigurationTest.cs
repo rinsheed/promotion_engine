@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PromotionEngineTest
 {
-    public class Tests
+    public class PromoConfigurationTest
     {
         [SetUp]
         public void Setup()
